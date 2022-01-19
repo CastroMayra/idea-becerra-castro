@@ -7,6 +7,7 @@ function App() {
   return <>
     <NavBar/>
     <ItemListContainer nombre="Mascoteros" app="Mi Primer APP en React!!"/>
+    <br></br>
     </>;
 }
 
