@@ -10,7 +10,7 @@ export default class ItemListContainer extends Component {
                 <div>
                     Bienvenidos {this.props.nombre} a {this.props.app}
                 </div>
-                {/* <ItemCount stock="5" initial="1" /> */}
+                <ItemCount stock="10" initial="1" />
             </>
         )
     }
