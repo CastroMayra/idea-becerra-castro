@@ -19,6 +19,7 @@ export default function ItemCount({ stock, initial }) {
     }
     return (
         <>
+        <br/>
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
                     <Card.Title style={{ textAlign:'center'}}>Contador</Card.Title>
@@ -29,6 +30,7 @@ export default function ItemCount({ stock, initial }) {
                     <Button onClick={() => Sumar()} variant="secondary">+</Button>
                 </ButtonGroup>
             </Card>
+            <br/>
         </>
     )
 }
