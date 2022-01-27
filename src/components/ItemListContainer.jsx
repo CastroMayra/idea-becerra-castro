@@ -1,26 +1,26 @@
-import React from "react";
-import { Component } from "react";
-import ItemCount from "./ItemCount";
+import React, { useEffect } from "react";
 import ItemList from "./ItemList";
 import { Stack } from 'react-bootstrap';
+import { useParams } from "react-router-dom";
 
 
-export default class ItemListContainer extends Component {
-    render() {
-        return (
-            <>
-            
-                <div>
-                    Bienvenidos {this.props.nombre} a {this.props.app}
-                </div>
-                <div>
-                    <ItemCount stock="10" initial="1" />
-                </div>
-                <Stack direction="horizontal" gap={3}>
-                    <ItemList></ItemList>
-                </Stack>
+export default function ItemListContainer() {
 
-            </>
-        )
-    }
+    const { categoryId } = useParams();
+
+    useEffect(() => {
+        console.log(categoryId);
+    }, [categoryId])
+
+    return (
+        <>
+            <br></br>
+            Estoy en la categoría {categoryId}
+
+            <Stack direction="horizontal" gap={3}>
+                <ItemList categoryId={categoryId}></ItemList>
+            </Stack>
+
+        </>
+    )
 }

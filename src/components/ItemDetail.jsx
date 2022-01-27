@@ -1,21 +1,26 @@
 import React from "react";
-import { Card } from 'react-bootstrap';
-import img from './img/NutriqueHealty2k.jpg';
+import { Card, Button } from 'react-bootstrap';
+import ItemCount from "./ItemCount";
 
 
 
 export default function ItemDetail({ producto }) {
-    
+
+    console.log('./img/' + producto.pictureUrl)
+    const pictureUrl = '/img/' + producto.pictureUrl;
+
     return (
         <>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={img} style={{width:200, height:260, marginLeft: "auto", marginRight:"auto"}}/>
+            <Card style={{ width: '18rem', marginLeft: "auto", marginRight: "auto" }}>
+                <Card.Img variant="top" src={pictureUrl} style={{ width: 200, height: 250, marginLeft: "auto", marginRight: "auto" }} />
                 <Card.Body>
-                    <Card.Title>{producto.Title}</Card.Title>
+                    <Card.Title>{producto.title}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{producto.price}</Card.Subtitle>
                     <Card.Text>
                         {producto.description}
                     </Card.Text>
-                    <Card.Subtitle className="mb-2 text-muted">{producto.price}</Card.Subtitle>
+                    <Card.Text >Stock disponible: {producto.stock}</Card.Text>
+                    <ItemCount stock={producto.stock} initial="1" ></ItemCount>
                 </Card.Body>
             </Card>
         </>
