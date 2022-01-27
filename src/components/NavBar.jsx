@@ -7,7 +7,7 @@ export default function NavBar() {
         <>
             <Navbar bg="#BFE4FC" expand="lg" style={{backgroundColor:'#BFE4FC'}}>
                 <Container>
-                    <Navbar.Brand href="#inicio">Tienda de Mascotas</Navbar.Brand>
+                    <Navbar.Brand href="#inicio">Tienda para Mascotas</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
