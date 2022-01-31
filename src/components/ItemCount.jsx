@@ -19,18 +19,16 @@ export default function ItemCount({ stock, initial }) {
     }
     return (
         <>
-        <br/>
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title style={{ textAlign:'center'}}>Contador</Card.Title>
-                </Card.Body>
+            <br />
+            <Card style={{ width: '15rem' }}>
                 <ButtonGroup aria-label="Basic example">
                     <Button onClick={() => Restar()} variant="secondary">-</Button>
-                    <Card.Body style={{ textAlign:'center'}}>{contador}</Card.Body>
+                    <Card.Body style={{ textAlign: 'center' }}>{contador}</Card.Body>
                     <Button onClick={() => Sumar()} variant="secondary">+</Button>
                 </ButtonGroup>
+                <Button variant="primary">AGREGAR AL CARRITO</Button>
             </Card>
-            <br/>
+            <br />
         </>
     )
 }
