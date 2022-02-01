@@ -9,6 +9,7 @@ export default function ItemDetailContainer() {
     const { id } = useParams();
     const [promesaCompleta, setPromesaCompleta] = useState(false);
     const [itemDetail, setItemDetail] = useState({});
+
     const getItem = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve([
@@ -66,7 +67,6 @@ export default function ItemDetailContainer() {
         getItem
             .then(res => {
                 setPromesaCompleta(true);
-                console.log(id)
                 setItemDetail(res.find(producto => producto.id == id))
             }, [id])
             .catch(err => {

@@ -13,38 +13,52 @@ export default function NavBar() {
             <Navbar bg="#BFE4FC" expand="lg" style={{ backgroundColor: '#BFE4FC' }}>
                 <Container>
                     <Navbar.Brand>
-                        <Link to={"/"} style={{ textDecoration: 'none' }}>Tienda para Mascotas</Link>
+                        <Link to={"/"} class="navBrand">
+                            Tienda para Mascotas
+                        </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link>
-                                <Link to={"/"} style={{ textDecoration: 'none' }}>INICIO</Link>
+                                <Link to={"/"} class="navLink" >
+                                    INICIO
+                                </Link>
                             </Nav.Link>
                             <Nav.Link>
-                                <Link to={"/contacto"} style={{ textDecoration: 'none' }}>CONTACTO</Link>
+                                <Link to={"/contacto"} class="navLink">
+                                    CONTACTO
+                                </Link>
                             </Nav.Link>
                             {/* <Nav.Link href="#contacto">CONTACTO</Nav.Link>*/}
                             <NavDropdown title="MASCOTAS" id="basic-nav-dropdown">
                                 <NavDropdown.Item>
                                     <Nav.Link>
-                                        <Link to={"/categoria/gatos"} style={{ textDecoration: 'none' }}>GATOS</Link>
+                                        <Link to={"/categoria/gatos"} class="navLink">
+                                            GATOS
+                                        </Link>
                                     </Nav.Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
                                     <Nav.Link>
-                                        <Link to={"/categoria/perros"} style={{ textDecoration: 'none' }}>PERROS</Link>
+                                        <Link to={"/categoria/perros"} class="navLink">
+                                            PERROS
+                                        </Link>
                                     </Nav.Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
                                     <Nav.Link>
-                                        <Link to={"/categoria/aves"} style={{ textDecoration: 'none' }}>AVES</Link>
+                                        <Link to={"/categoria/aves"} class="navLink">
+                                            AVES
+                                        </Link>
                                     </Nav.Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item>
                                     <Nav.Link>
-                                        <Link to={"/categoria/roedores"} style={{ textDecoration: 'none' }}>ROEDORES</Link>
+                                        <Link to={"/categoria/roedores"} class="navLink">
+                                            ROEDORES
+                                        </Link>
                                     </Nav.Link>
                                 </NavDropdown.Item>
                             </NavDropdown>
