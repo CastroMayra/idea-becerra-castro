@@ -8,15 +8,19 @@ import ItemCount from "./ItemCount";
 
 export default function ItemDetail({ producto }) {
 
-    const { carrito, setCarrito, addItem, removeItem, clear, isInCart } = useContext(cartContext);
+    const { addItem, removeItem, isInCart } = useContext(cartContext);
 
     const pictureUrl = '/img/' + producto.pictureUrl;
-    let [agregarCarrito, setAgregarCarrito] = useState(false);
+    let [agregarCarrito, setAgregarCarrito] = useState(isInCart(producto.id)); /* no funca =( */
 
     function onAdd(contador) {
         setAgregarCarrito(true);
         addItem(producto, contador)
+    }
 
+    function onRemove(itemId) {
+        setAgregarCarrito(false);
+        removeItem(itemId)
     }
 
     return (
@@ -42,7 +46,7 @@ export default function ItemDetail({ producto }) {
                                         FINALIZAR
                                     </Link>
                                 </Button>
-                                <Button onClick={() => removeItem(producto.id)} variant="secondary" style={{ marginTop: '2px', borderRadius: '15px' }}>
+                                <Button onClick={() => onRemove(producto.id)} variant="secondary" style={{ marginTop: '2px', borderRadius: '15px' }}>
                                     ELIMINAR DEL CARRITO
                                 </Button>
                             </Card>

@@ -12,7 +12,6 @@ export default function CartContext({ children }) {
             item: item,
             cantidad: quantity
         };
-        console.log(item.id)
         if (isInCart(item.id)) {
             alert("El producto ya se encuentra en el Carrito")
         }
@@ -27,21 +26,22 @@ setCarrito([...carrito, {item:item, cantidad: quantity}]) */
     function removeItem(itemId) {
         const removeItem = (carrito.findIndex(producto => producto.item.id == itemId))
         if (removeItem >= 0) {
-            const itemEliminado = carrito.splice(removeItem, 1)
-            alert("Se ha eliminado " + itemEliminado.item.title + " del carrito")
+            const itemEliminado = carrito.splice(removeItem, 1);
+            alert("Se ha eliminado " + itemEliminado[0].item.title + " del carrito");
+
         } else {
-            alert("El producto no está en el carrito")
+            alert("El producto no está en el carrito");
         }
 
     }
 
     function clear() {
         setCarrito([])
+        alert("Se han eliminado todos los productos del carrito")
     }
 
     function isInCart(itemId) {
         const isInCart = (carrito.findIndex(producto => producto.item.id == itemId))
-        console.log("isInCart " + isInCart)
         return isInCart >= 0
     }
 
