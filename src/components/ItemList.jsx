@@ -10,6 +10,7 @@ export default function ItemList({ categoryId }) {
 
     const [promesaCompleta, setPromesaCompleta] = useState(false);
     const [itemList, setItemList] = useState([]);
+
     const productoEnStock = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve([
@@ -76,22 +77,6 @@ export default function ItemList({ categoryId }) {
             });
     })
 
-    function onAdd() {
-        alert("estoy haciendo on add")
-    }
-    // useEffect(()  => {
-    //     if (id > "") {
-    //         console.log("then" + id)
-    //         setItemListCategory(itemList.filter(producto => producto.categoria == id))
-    //     }
-    //     else {
-    //         console.log("else" + id)
-    //         setItemListCategory(itemList)
-    //     }
-    //     // (id > "") ? setItemListCategory(itemList.filter(producto => producto.categoria == id)) : setItemListCategory(itemList)
-
-    // }, [id]
-    // )
 
     return (
         <>

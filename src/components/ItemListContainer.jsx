@@ -8,15 +8,8 @@ export default function ItemListContainer() {
 
     const { categoryId } = useParams();
 
-    useEffect(() => {
-        console.log(categoryId);
-    }, [categoryId])
-
     return (
         <>
-            <br></br>
-            Estoy en la categoría {categoryId}
-
             <Stack direction="horizontal" gap={3}>
                 <ItemList categoryId={categoryId}></ItemList>
             </Stack>

@@ -1,0 +1,42 @@
+
+
+.plus {
+    position:relative;
+    margin: auto;
+    margin-right: 5%;
+    border: 1px dotted white;
+    width: 3px;
+    height: 3px;
+    background-color: dimgray;
+    box-sizing: border-box;
+    transform: scale(11);
+  }
+
+  .plus:active{
+    background-color: cornflowerblue;
+  }
+
+  .plus:hover{
+      cursor: pointer;
+  }
+
+  .minus {
+    position:relative;
+    margin: auto;
+    margin-left: 5%;
+    border: 1px dotted white;
+    height: 3px;
+    background-color: dimgray;
+    box-sizing: border-box;
+    transform: scale(11);
+  }
+
+  .minus:active{
+    background-color: cornflowerblue;
+  }
+
+  .minus:hover{
+      cursor: pointer;
+  }
+
+ 
