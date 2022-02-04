@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Stack } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 
@@ -75,6 +75,9 @@ export default function ItemDetailContainer() {
     })
     return (
         <>
+            <Link to={"/"} style={{ textDecoration: 'none', color: 'black' }}>
+                Volver
+            </Link>
             {(promesaCompleta) ?
                 <>
                     <ItemDetail producto={itemDetail} />

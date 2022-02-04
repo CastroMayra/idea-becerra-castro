@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { cartContext } from "../context/CartContext";
 import ItemCount from "./ItemCount";
 
 
 
 export default function ItemDetail({ producto }) {
 
+    const { carrito, setCarrito, addItem, removeItem, clear, isInCart } = useContext(cartContext);
+
     const pictureUrl = '/img/' + producto.pictureUrl;
     let [agregarCarrito, setAgregarCarrito] = useState(false);
 
     function onAdd(contador) {
         setAgregarCarrito(true);
-        alert("Se agregaron " + contador + " " + producto.title + " al carrito");
+        addItem(producto, contador)
 
     }
 
@@ -39,7 +42,7 @@ export default function ItemDetail({ producto }) {
                                         FINALIZAR
                                     </Link>
                                 </Button>
-                                <Button onClick={() => setAgregarCarrito(false)} variant="secondary" style={{ marginTop: '2px', borderRadius: '15px' }}>
+                                <Button onClick={() => removeItem(producto.id)} variant="secondary" style={{ marginTop: '2px', borderRadius: '15px' }}>
                                     ELIMINAR DEL CARRITO
                                 </Button>
                             </Card>
