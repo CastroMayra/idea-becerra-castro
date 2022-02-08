@@ -10,13 +10,13 @@ export default function CartContext({ children }) {
         const agregarItem =
         {
             item: item,
-            cantidad: quantity
+            quantity: quantity
         };
         if (isInCart(item.id)) {
             alert("El producto ya se encuentra en el Carrito")
         }
         else {
-            setCarrito([...carrito, { item: item, cantidad: quantity }])
+            setCarrito([...carrito, { item: item, quantity: quantity }])
             /*   carrito.push(agregarItem);
             /*    (Estos 3 Puntos se llama Spread y trae lo que ya tiene previamente cargado el Array)     
    setCarrito([...carrito, {item:item, cantidad: quantity}]) */
@@ -46,9 +46,13 @@ export default function CartContext({ children }) {
         return isInCart >= 0
     }
 
+    function isEmpty() {
+        return carrito.length == 0
+    }
+
     return (
         <>
-            <cartContext.Provider value={{ carrito, setCarrito, addItem, removeItem, clear, isInCart }}>
+            <cartContext.Provider value={{ carrito, setCarrito, addItem, removeItem, clear, isInCart, isEmpty }}>
                 {children}
             </cartContext.Provider>
         </>

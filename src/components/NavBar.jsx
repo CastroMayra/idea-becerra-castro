@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navbar, Container, NavDropdown, Nav, Row, Col } from 'react-bootstrap';
 import CartWidget from "./CartWidget";
 import { Link } from 'react-router-dom';
 import "./NavBar.css";
+import { cartContext } from "../context/CartContext";
 
 
 export default function NavBar() {
+    const { carrito, isEmpty }
+        = useContext(cartContext);
+
+    const [carritoVacio, setCarritoVacio] = useState(false);
+
+    useEffect(() => {
+        (carrito.length > 0) ?
+            setCarritoVacio(true)
+            :
+            setCarritoVacio(false)
+    })
 
     return (
         <>
@@ -64,7 +76,17 @@ export default function NavBar() {
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
-                    <CartWidget />
+                    <>
+                        {(carritoVacio) ?
+                            <>
+                                <CartWidget />
+                            </>
+                            :
+                            <>
+                            </>
+
+                        }
+                    </>
                 </Container>
             </Navbar>
 
