@@ -72,7 +72,10 @@ export default function ItemDetailContainer() {
             .catch(err => {
                 console.log(err);
             });
-    })
+    }, [])
+    // Como coloco el array de dependencias vacio???
+
+
     return (
         <>
             <Link to={"/"} style={{ textDecoration: 'none', color: 'black' }}>

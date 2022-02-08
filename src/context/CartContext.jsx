@@ -16,9 +16,10 @@ export default function CartContext({ children }) {
             alert("El producto ya se encuentra en el Carrito")
         }
         else {
-            carrito.push(agregarItem);
+            setCarrito([...carrito, { item: item, cantidad: quantity }])
+            /*   carrito.push(agregarItem);
             /*    (Estos 3 Puntos se llama Spread y trae lo que ya tiene previamente cargado el Array)     
-setCarrito([...carrito, {item:item, cantidad: quantity}]) */
+   setCarrito([...carrito, {item:item, cantidad: quantity}]) */
             alert("Se agregaron " + quantity + " " + item.title + " al carrito");
         }
     }

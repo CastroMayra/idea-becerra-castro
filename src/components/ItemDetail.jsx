@@ -11,7 +11,7 @@ export default function ItemDetail({ producto }) {
     const { addItem, removeItem, isInCart } = useContext(cartContext);
 
     const pictureUrl = '/img/' + producto.pictureUrl;
-    let [agregarCarrito, setAgregarCarrito] = useState(isInCart(producto.id)); /* no funca =( */
+    let [agregarCarrito, setAgregarCarrito] = useState(false); /* ya funca =) */
 
     function onAdd(contador) {
         setAgregarCarrito(true);
@@ -34,11 +34,7 @@ export default function ItemDetail({ producto }) {
                         {producto.description}
                     </Card.Text>
                     <Card.Text >Stock disponible: {producto.stock}</Card.Text>
-                    {(!agregarCarrito) ?
-                        <>
-                            <ItemCount stock={producto.stock} initial="1" onAdd={onAdd}></ItemCount>
-                        </>
-                        :
+                    {(agregarCarrito || isInCart(producto.id)) ?
                         <>
                             <Card style={{ width: '15rem', marginLeft: 'auto', marginRight: 'auto', borderStyle: 'none' }}>
                                 <Button variant="primary" style={{ borderRadius: '15px' }}>
@@ -51,6 +47,11 @@ export default function ItemDetail({ producto }) {
                                 </Button>
                             </Card>
                         </>
+                        :
+                        <>
+                            <ItemCount stock={producto.stock} initial="1" onAdd={onAdd}></ItemCount>
+                        </>
+
                     }
 
                 </Card.Body>
