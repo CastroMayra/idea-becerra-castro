@@ -14,12 +14,12 @@ export default function ItemDetail({ producto }) {
     let [agregarCarrito, setAgregarCarrito] = useState(false); /* ya funca =) */
 
     function onAdd(contador) {
-        setAgregarCarrito(true);
+        setAgregarCarrito(!agregarCarrito);
         addItem(producto, contador)
     }
 
     function onRemove(itemId) {
-        setAgregarCarrito(false);
+        setAgregarCarrito(!agregarCarrito);
         removeItem(itemId)
     }
 
@@ -34,7 +34,7 @@ export default function ItemDetail({ producto }) {
                         {producto.description}
                     </Card.Text>
                     <Card.Text >Stock disponible: {producto.stock}</Card.Text>
-                    {(agregarCarrito || isInCart(producto.id)) ?
+                    {(isInCart(producto.id)) ?
                         <>
                             <Card style={{ width: '15rem', marginLeft: 'auto', marginRight: 'auto', borderStyle: 'none' }}>
                                 <Button variant="primary" style={{ borderRadius: '15px' }}>

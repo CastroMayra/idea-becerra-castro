@@ -1,24 +1,23 @@
-.navBar{
-     background-color: '#BFE4FC'; 
-    }
+
 
 .navBrand{
-    color: gray;
+    color: whitesmoke;
     text-decoration: none;
     text-transform: uppercase;
+    
 }
 
 .navLink {
     text-decoration: none;
-    color: gray;
+    color: whitesmoke;
 }
 
 .navLink:hover{
-    color: #693DF5   ;
+    color: lightgray;
 }
 
 .navBrand:hover{
-    color: #693DF5   ;
+    color: lightgray;
 }
 
 

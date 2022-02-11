@@ -25,7 +25,7 @@
     background-color: white;
     text-align: center;
     padding: 20px 0;
-    font-size: 18px;
+    font-size: 16px;
     text-transform: capitalize;
     
 }
@@ -34,14 +34,14 @@
     background-color: white;
     text-align: center;
     padding: 20px 0;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .grid-price {
     background-color: white;
     text-align: center;
     padding: 20px 0;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .grid-total  {
@@ -95,7 +95,7 @@
 
    .btn-grad:hover {
      background-position: right center; /* change the direction of the change here */
-     color: #fff;
+     color: lightgray;
      text-decoration: none;
    }
   
