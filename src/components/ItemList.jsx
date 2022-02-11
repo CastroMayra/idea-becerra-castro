@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Item from "./Item";
 import { Container } from 'react-bootstrap';
+import { getFirestore } from "../firebase/firebase";
 
 
 
@@ -11,7 +12,36 @@ export default function ItemList({ categoryId }) {
     const [promesaCompleta, setPromesaCompleta] = useState(false);
     const [itemList, setItemList] = useState([]);
 
-    const productoEnStock = new Promise((resolve, reject) => {
+
+    useEffect(() => {
+        const db = getFirestore();
+
+        let itemCollection = db.collection("ItemCollection");;
+
+        /*         if (categoryId > "") {
+                    itemCollection = db.collection("ItemCollection");
+                } else {
+                    itemCollection = db.collection("ItemCollection").where("categoryId", "==", categoryId);
+                } */
+
+        itemCollection.get()
+            .then((querySnapShot) => {
+                if (querySnapShot.empty) {
+                    alert("No existe esa colección")
+                    return
+                }
+                console.log("item found");
+                setItemList(querySnapShot.docs.map((doc) => doc.data()));
+                console.log(itemList[0])
+                setPromesaCompleta(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
+
+
+    /* const productoEnStock = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve([
                 {
@@ -75,7 +105,9 @@ export default function ItemList({ categoryId }) {
             .catch(err => {
                 console.log(err);
             });
-    })
+    }) */
+
+
 
 
     return (

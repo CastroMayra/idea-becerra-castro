@@ -10,7 +10,7 @@ export default function ItemDetail({ producto }) {
 
     const { addItem, removeItem, isInCart } = useContext(cartContext);
 
-    const pictureUrl = '/img/' + producto.pictureUrl;
+    const pictureUrl = '/img/' + producto.imageId;
     let [agregarCarrito, setAgregarCarrito] = useState(false); /* ya funca =) */
 
     function onAdd(contador) {

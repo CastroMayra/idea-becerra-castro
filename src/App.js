@@ -46,7 +46,7 @@ export default function App() {
               </p>
 
             </Route>
-            <Route path="/item/:id">
+            <Route path="/item/:itemId">
               <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
                 Estas en el Producto
               </p>
