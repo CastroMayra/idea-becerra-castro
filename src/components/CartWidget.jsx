@@ -5,16 +5,26 @@ import { cartContext } from "../context/CartContext";
 export default function CartWidget() {
 
   const { carrito } = useContext(cartContext);
+  const [cartCount, setCartCount] = useState();
 
+  /* 
+    function cantidad() {
+      let cantidad = 0;
+      carrito.forEach(element => {
+        cantidad += Number(element.quantity)
+  
+      });
+      return cantidad
+    } */
 
-  function cantidad() {
+  useEffect(() => {
     let cantidad = 0;
     carrito.forEach(element => {
       cantidad += Number(element.quantity)
 
     });
-    return cantidad
-  }
+    setCartCount(cantidad)
+  }, [carrito])
 
 
   return (
@@ -22,7 +32,7 @@ export default function CartWidget() {
       <Link to={"/cart"}>
         <img src='/img/cart.png' width="35" height="35" />
       </Link>
-      <p>{cantidad()}</p>
+      <p>{cartCount}</p>
     </>
   )
 }
