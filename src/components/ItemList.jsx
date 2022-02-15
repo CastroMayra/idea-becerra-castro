@@ -5,24 +5,22 @@ import { Container } from 'react-bootstrap';
 import { getFirestore } from "../firebase/firebase";
 
 
-
-
 export default function ItemList({ categoryId }) {
 
-    const [promesaCompleta, setPromesaCompleta] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [itemList, setItemList] = useState([]);
-
 
     useEffect(() => {
         const db = getFirestore();
+        setLoading(true);
 
-        let itemCollection = db.collection("ItemCollection");;
-
-        /*         if (categoryId > "") {
-                    itemCollection = db.collection("ItemCollection");
-                } else {
-                    itemCollection = db.collection("ItemCollection").where("categoryId", "==", categoryId);
-                } */
+        var itemCollection;
+        if (categoryId) {
+            itemCollection = db.collection("ItemCollection")
+                .where("categoryId", "==", categoryId)
+        } else {
+            itemCollection = db.collection("ItemCollection")
+        }
 
         itemCollection.get()
             .then((querySnapShot) => {
@@ -30,15 +28,21 @@ export default function ItemList({ categoryId }) {
                     alert("No existe esa colección")
                     return
                 }
-                console.log("item found");
-                setItemList(querySnapShot.docs.map((doc) => doc.data()));
-                console.log(itemList[0])
-                setPromesaCompleta(true);
+                setItemList(querySnapShot.docs.map((doc) => {
+                    return { id: doc.id, ...doc.data() }
+                }));
+
+
+
             })
             .catch((err) => {
                 console.log(err);
             })
-    }, [])
+        const arrayList = itemList;
+        if (categoryId > "") {
+            setItemList(arrayList.filter(producto => producto.categoria == categoryId))
+        }
+    }, [categoryId])
 
 
     /* const productoEnStock = new Promise((resolve, reject) => {
@@ -112,7 +116,7 @@ export default function ItemList({ categoryId }) {
 
     return (
         <>
-            {(promesaCompleta) ?
+            {(loading) ?
                 <>
                     {itemList.map(producto => {
                         return <>

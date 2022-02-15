@@ -5,7 +5,6 @@ import { cartContext } from "../context/CartContext";
 export default function CartWidget() {
 
   const { carrito } = useContext(cartContext);
-  const [cartCount, setCartCount] = useState(false);
 
 
   function cantidad() {
@@ -16,10 +15,6 @@ export default function CartWidget() {
     });
     return cantidad
   }
-
-  useEffect(() => {
-    setCartCount(!cartCount);
-  })
 
 
   return (
