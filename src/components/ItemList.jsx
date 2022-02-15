@@ -2,16 +2,50 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Item from "./Item";
 import { Container } from 'react-bootstrap';
-
-
+import { getFirestore } from "../firebase/firebase";
 
 
 export default function ItemList({ categoryId }) {
 
-    const [promesaCompleta, setPromesaCompleta] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [itemList, setItemList] = useState([]);
 
-    const productoEnStock = new Promise((resolve, reject) => {
+    useEffect(() => {
+        const db = getFirestore();
+        setLoading(true);
+
+        var itemCollection;
+        if (categoryId) {
+            itemCollection = db.collection("ItemCollection")
+                .where("categoryId", "==", categoryId)
+        } else {
+            itemCollection = db.collection("ItemCollection")
+        }
+
+        itemCollection.get()
+            .then((querySnapShot) => {
+                if (querySnapShot.empty) {
+                    alert("No existe esa colección")
+                    return
+                }
+                setItemList(querySnapShot.docs.map((doc) => {
+                    return { id: doc.id, ...doc.data() }
+                }));
+
+
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        const arrayList = itemList;
+        if (categoryId > "") {
+            setItemList(arrayList.filter(producto => producto.categoria == categoryId))
+        }
+    }, [categoryId])
+
+
+    /* const productoEnStock = new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve([
                 {
@@ -75,12 +109,14 @@ export default function ItemList({ categoryId }) {
             .catch(err => {
                 console.log(err);
             });
-    })
+    }) */
+
+
 
 
     return (
         <>
-            {(promesaCompleta) ?
+            {(loading) ?
                 <>
                     {itemList.map(producto => {
                         return <>
