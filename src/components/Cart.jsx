@@ -7,16 +7,10 @@ import { Link } from "react-router-dom";
 
 export default function Cart() {
 
-    const { carrito, removeItem, clear, isEmpty } = useContext(cartContext);
+    const { carrito, removeItem, clear, isEmpty, total } = useContext(cartContext);
     const [actualizarCarrito, setActualizarCarrito] = useState(false);
 
-    function total() {
-        let total = 0;
-        carrito.forEach(element => {
-            total = total + (element.item.price * element.quantity)
-        });
-        return total;
-    }
+
 
     useEffect(() => {
         setActualizarCarrito(!actualizarCarrito);
@@ -28,9 +22,13 @@ export default function Cart() {
             {(isEmpty()) ?
                 <>
                     <br></br>
-                    <div style={{ color: 'gray', fontSize: '20px', textTransform: 'none' }}>Ehmm... parece que no hay productos en el Carrito!</div>
+                    <div style={{ color: 'gray', fontSize: '20px', textTransform: 'none' }}>
+                        Ehmm... parece que no hay productos en el Carrito!
+                    </div>
                     <br />
-                    <Link to={"/"} style={{ textDecoration: 'none', color: 'whitesmoke', backgroundColor: '#457D9B', textTransform: 'uppercase', padding: '10px', borderRadius: '15px' }}>Elegir productos</Link>
+                    <Link to={"/"} style={{ textDecoration: 'none', color: 'whitesmoke', backgroundColor: '#457D9B', textTransform: 'uppercase', padding: '10px', borderRadius: '15px' }}>
+                        Elegir productos
+                    </Link>
                 </>
                 :
                 <>
@@ -59,6 +57,11 @@ export default function Cart() {
                         </div>
                     </div >
                     <br />
+                    <div>
+                        <Link to={"/order"} style={{ textDecoration: 'none', color: 'whitesmoke', backgroundColor: '#457D9B', textTransform: 'uppercase', padding: '10px', borderRadius: '15px' }}>
+                            Finalizar Compra!
+                        </Link>
+                    </div>
 
 
                 </>

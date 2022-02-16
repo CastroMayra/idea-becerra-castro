@@ -50,9 +50,17 @@ export default function CartContext({ children }) {
         return carrito.length == 0
     }
 
+    function total() {
+        let total = 0;
+        carrito.forEach(element => {
+            total = total + (element.item.price * element.quantity)
+        });
+        return total;
+    }
+
     return (
         <>
-            <cartContext.Provider value={{ carrito, setCarrito, addItem, removeItem, clear, isInCart, isEmpty }}>
+            <cartContext.Provider value={{ carrito, setCarrito, addItem, removeItem, clear, isInCart, isEmpty, total }}>
                 {children}
             </cartContext.Provider>
         </>
