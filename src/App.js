@@ -5,6 +5,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import { BrowserRouter, Switch, Route, } from 'react-router-dom';
 import Cart from './components/Cart';
 import CartContext from './context/CartContext';
+import Order from './components/Order';
 
 
 export default function App() {
@@ -52,6 +53,13 @@ export default function App() {
               </p>
 
               <ItemDetailContainer />
+            </Route>
+
+            <Route exact path="/order">
+              <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
+                Finalizar Compra!
+              </p>
+              <Order />
             </Route>
           </Switch>
         </BrowserRouter>
