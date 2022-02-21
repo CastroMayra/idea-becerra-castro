@@ -1,23 +1,22 @@
-
-
 .navBrand{
     color: whitesmoke;
     text-decoration: none;
     text-transform: uppercase;
-    
-}
+    }
+
+.navBrand:hover{
+    color: lightgray;
+    }
 
 .navLink {
     text-decoration: none;
     color: whitesmoke;
-}
+    }
 
 .navLink:hover{
     color: lightgray;
-}
+    }
 
-.navBrand:hover{
-    color: lightgray;
-}
+
 
 

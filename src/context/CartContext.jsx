@@ -13,14 +13,11 @@ export default function CartContext({ children }) {
             quantity: quantity
         };
         if (isInCart(item.id)) {
-            alert("El producto ya se encuentra en el Carrito")
+            // alert("El producto ya se encuentra en el Carrito")
         }
         else {
             setCarrito([...carrito, { item: item, quantity: quantity }])
-            /*   carrito.push(agregarItem);
-            /*    (Estos 3 Puntos se llama Spread y trae lo que ya tiene previamente cargado el Array)     
-   setCarrito([...carrito, {item:item, cantidad: quantity}]) */
-            alert("Se agregaron " + quantity + " " + item.title + " al carrito");
+            // alert("Se agregaron " + quantity + " " + item.title + " al carrito");
         }
     }
 
@@ -28,17 +25,16 @@ export default function CartContext({ children }) {
         const removeItem = (carrito.findIndex(producto => producto.item.id == itemId))
         if (removeItem >= 0) {
             const itemEliminado = carrito.splice(removeItem, 1);
-            alert("Se ha eliminado " + itemEliminado[0].item.title + " del carrito");
+            // alert("Se ha eliminado " + itemEliminado[0].item.title + " del carrito");
 
         } else {
-            alert("El producto no está en el carrito");
+            // alert("El producto no está en el carrito");
         }
-
     }
 
     function clear() {
         setCarrito([])
-        alert("Se han eliminado todos los productos del carrito")
+        // alert("Se han eliminado todos los productos del carrito")
     }
 
     function isInCart(itemId) {

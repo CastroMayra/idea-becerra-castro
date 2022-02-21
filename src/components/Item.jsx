@@ -1,8 +1,5 @@
 import React from "react";
-import { Card, ButtonGroup, Button } from 'react-bootstrap';
-
-
-
+import { Card } from 'react-bootstrap';
 
 export default function Item({ producto }) {
 

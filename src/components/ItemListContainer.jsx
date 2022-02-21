@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ItemList from "./ItemList";
 import { Stack } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
-
 
 export default function ItemListContainer() {
 
@@ -13,7 +12,6 @@ export default function ItemListContainer() {
             <Stack direction="horizontal" gap={3}>
                 <ItemList categoryId={categoryId}></ItemList>
             </Stack>
-
         </>
     )
 }
