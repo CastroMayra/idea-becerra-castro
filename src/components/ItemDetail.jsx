@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Card, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { cartContext } from "../context/CartContext";
 import ItemCount from "./ItemCount";
-
-
 
 export default function ItemDetail({ producto }) {
 
     const { addItem, removeItem, isInCart } = useContext(cartContext);
 
     const pictureUrl = '/img/' + producto.imageId;
-    let [agregarCarrito, setAgregarCarrito] = useState(false); /* ya funca =) */
+    let [agregarCarrito, setAgregarCarrito] = useState(false);
 
     function onAdd(contador) {
         setAgregarCarrito(!agregarCarrito);
@@ -51,12 +49,9 @@ export default function ItemDetail({ producto }) {
                         <>
                             <ItemCount stock={producto.stock} initial="1" onAdd={onAdd}></ItemCount>
                         </>
-
                     }
-
                 </Card.Body>
             </Card>
         </>
     )
-
 }

@@ -10,12 +10,9 @@ export default function Cart() {
     const { carrito, removeItem, clear, isEmpty, total } = useContext(cartContext);
     const [actualizarCarrito, setActualizarCarrito] = useState(false);
 
-
-
     useEffect(() => {
         setActualizarCarrito(!actualizarCarrito);
     })
-
 
     return (
         <>
@@ -62,13 +59,8 @@ export default function Cart() {
                             Finalizar Compra!
                         </Link>
                     </div>
-
-
                 </>
             }
-
-
         </>
     )
-
 }
