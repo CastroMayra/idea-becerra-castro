@@ -6,6 +6,7 @@ import { getFirestore } from "../firebase/firebase";
 import { cartContext } from "../context/CartContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import "./Order.css";
 
 export default function Orders() {
 
@@ -55,16 +56,18 @@ export default function Orders() {
                 :
                 <>
                     <div>
-                        <h3>Ingresa los Datos</h3>
+                        <h3>Ingresa tus Datos</h3>
                         <br />
 
                         <input type="text" name="name" ref={nameRef} placeholder="Nombre y Apellido" />
                         < br />
-                        <input type="text" name="mobile" ref={phoneRef} placeholder="Número de celular" />
+                        <input type="tel" name="mobile" ref={phoneRef} placeholder="Número de celular" />
                         < br />
-                        <input type="text" name="email" ref={emailRef} placeholder="Tu email" />
+                        <input type="email" name="email" ref={emailRef} placeholder="Tu email" />
                         < br />
-                        <button onClick={() => confirmarCompra()}>Confirmar</button>
+                        <button onClick={() => confirmarCompra()} className="btn-confirmar">
+                            Confirmar
+                        </button>
                     </div>
                 </>
             }

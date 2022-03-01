@@ -18,47 +18,27 @@ export default function App() {
           <Switch>
             {/*ruta home*/}
             <Route exact path="/">
-              <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
-                Estas en Home
-              </p>
-
               <ItemListContainer />
             </Route>
+
             {/*ruta contacto*/}
             <Route exact path="/contacto">
-              <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
-                Estas en Contacto
-              </p>
-
             </Route>
+
             {/* ruta dinámica para categoría mascotas*/}
             <Route path="/categoria/:categoryId">
-              <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
-                Estas en Mascotas
-              </p>
               <ItemListContainer />
-
             </Route>
+
             <Route exact path="/cart">
-              <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
-                Estas en el Carrito
-                <Cart />
-
-              </p>
-
+              <Cart />
             </Route>
-            <Route path="/item/:itemId">
-              <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
-                Estas en el Producto
-              </p>
 
+            <Route path="/item/:itemId">
               <ItemDetailContainer />
             </Route>
 
             <Route exact path="/order">
-              <p style={{ color: '#AFB6B5 ', padding: '2px 15px', textTransform: 'uppercase' }}>
-                Finalizar Compra!
-              </p>
               <Order />
             </Route>
           </Switch>

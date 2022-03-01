@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Item from "./Item";
 import { Container } from 'react-bootstrap';
 import { getFirestore } from "../firebase/firebase";
+import "./LoadingSpinner.css"
 
 export default function ItemList({ categoryId }) {
 
@@ -60,7 +61,15 @@ export default function ItemList({ categoryId }) {
                     })}
                 </>
                 :
-                <>Cargando...</>
+                <>
+                    <div class="center">
+                        <div class="loadingSpinner" >
+                            <div>
+                                Loading
+                            </div>
+                        </div>
+                    </div>
+                </>
             }
         </>
     )

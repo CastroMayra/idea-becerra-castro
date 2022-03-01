@@ -1,0 +1,41 @@
+
+input {
+    border: thin solid #1097B2;
+    border-radius: 10px;
+    display: block;
+    padding: 10px;
+  
+   
+
+}
+
+h3 {text-transform: uppercase;
+    color: #1097B2;
+    padding: 10px;
+   
+}
+
+
+
+.btn-confirmar {background-image: linear-gradient(to right, #43cea2 0%, #185a9d  51%, #43cea2  100%)}
+
+  .btn-confirmar {
+     margin: 10px;
+     text-align: center;
+     text-transform: uppercase;
+     transition: 0.5s;
+     background-size: 200% auto;
+     color: white;            
+     box-shadow: 0 0 20px #eee;
+     border-radius: 10px;
+     display: block;
+     padding: 10px;
+    cursor: pointer;
+   }
+
+   .btn-confirmar:hover {
+     background-position: right center; 
+     color: lightgray;
+     text-decoration: none;
+   }
+  

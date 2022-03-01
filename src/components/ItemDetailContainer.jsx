@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import { getFirestore } from "../firebase/firebase";
+import "./ItemDetail.css";
+import "./LoadingSpinner.css"
 
 export default function ItemDetailContainer() {
 
@@ -32,15 +34,26 @@ export default function ItemDetailContainer() {
 
     return (
         <>
-            <Link to={"/"} style={{ textDecoration: 'none', color: 'black' }}>
-                Volver
-            </Link>
+
             {(productoEncontrado) ?
                 <>
+                    <Link to={"/"} style={{ textDecoration: 'none', color: 'black' }}>
+                        <button className="btn-confirmar">
+                            Volver
+                        </button>
+                    </Link>
                     <ItemDetail producto={itemDetail} />
                 </>
                 :
-                <>Loading...</>
+                <>
+                    <div class="center">
+                        <div class="loadingSpinner" >
+                            <div>
+                                Loading
+                            </div>
+                        </div>
+                    </div>
+                </>
             }
         </>
     )
