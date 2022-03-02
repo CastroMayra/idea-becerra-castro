@@ -7,15 +7,33 @@ import { cartContext } from "../context/CartContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Order.css";
+import { useEffect } from "react";
 
 export default function Orders() {
 
     const { carrito, total, clear } = useContext(cartContext);
     const [orderId, setOrderId] = useState('');
+    const [formCompleted, setFormCompleted] = useState(false)
+    const [isValidName, setIsValidName] = useState(false)
+    const [isValidPhone, setIsValidPhone] = useState(false)
+    const [isValidEmail, setIsValidEmail] = useState(false)
 
     const nameRef = useRef();
     const phoneRef = useRef();
     const emailRef = useRef();
+
+    function validacionNombre(formRef) {
+        setIsValidName(!!formRef);
+    };
+
+    function validacionTelefono(formRef) {
+        var regExp = /^\d+$/;
+        setIsValidPhone(!!regExp.test(formRef));
+    };
+
+    function validacionEmail(formRef) {
+        setIsValidEmail(!!formRef);
+    };
 
     function confirmarCompra() {
         const db = getFirestore();
@@ -31,7 +49,6 @@ export default function Orders() {
             date: firebase.firestore.Timestamp.fromDate(new Date()),
             total: total()
         }
-
         orders.add(miOrden)
             .then(({ id }) => {
                 setOrderId(id);
@@ -44,6 +61,10 @@ export default function Orders() {
             });
     }
 
+    useEffect(() => {
+        setFormCompleted(isValidName && isValidPhone && isValidEmail)
+    }, [formCompleted, isValidName, isValidPhone, isValidEmail])
+
     return (
         <>
             {(orderId) ?
@@ -55,19 +76,48 @@ export default function Orders() {
                 </>
                 :
                 <>
-                    <div>
+                    <div className="datosCompra">
                         <h3>Ingresa tus Datos</h3>
                         <br />
-
-                        <input type="text" name="name" ref={nameRef} placeholder="Nombre y Apellido" />
+                        <input
+                            onBlur={() => validacionNombre(nameRef.current.value)}
+                            type="text"
+                            name="name"
+                            ref={nameRef}
+                            placeholder="Nombre y Apellido"
+                        />
+                        {!isValidName && <span> El nombre es obligatorio </span>}
                         < br />
-                        <input type="tel" name="mobile" ref={phoneRef} placeholder="Número de celular" />
+                        <input
+                            onBlur={() => validacionTelefono(phoneRef.current.value)}
+                            type="tel"
+                            name="mobile"
+                            ref={phoneRef}
+                            placeholder="Número de celular"
+                        />
+                        {!isValidPhone && <span> El telefono es invalido </span>}
                         < br />
-                        <input type="email" name="email" ref={emailRef} placeholder="Tu email" />
+                        <input
+                            onBlur={() => validacionEmail(emailRef.current.value)}
+                            type="email"
+                            name="email"
+                            ref={emailRef}
+                            placeholder="Tu email"
+                        />
+                        {!isValidEmail && <span> El email es obligatorio </span>}
                         < br />
-                        <button onClick={() => confirmarCompra()} className="btn-confirmar">
-                            Confirmar
-                        </button>
+                        {(formCompleted) ? <>
+                            <button onClick={() => confirmarCompra()} className="btn-confirmar">
+                                Confirmar
+                            </button>
+                        </>
+                            :
+                            <>
+                                <button disabled className="btn-form-incomplete">
+                                    Confirmar
+                                </button>
+                            </>
+                        }
                     </div>
                 </>
             }

@@ -1,12 +1,17 @@
+.datosCompra{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0, -50%);
+  border: 5px solid #FFFF00;
+  padding: 10px;
+}
 
 input {
     border: thin solid #1097B2;
     border-radius: 10px;
     display: block;
     padding: 10px;
-  
-   
-
 }
 
 h3 {text-transform: uppercase;
@@ -14,8 +19,6 @@ h3 {text-transform: uppercase;
     padding: 10px;
    
 }
-
-
 
 .btn-confirmar {background-image: linear-gradient(to right, #43cea2 0%, #185a9d  51%, #43cea2  100%)}
 
@@ -34,6 +37,25 @@ h3 {text-transform: uppercase;
    }
 
    .btn-confirmar:hover {
+     background-position: right center; 
+     color: lightgray;
+     text-decoration: none;
+   }
+
+   .btn-confirmar {background-image: linear-gradient(to right, #43cea2 0%, #185a9d  51%, #43cea2  100%)}
+
+  .btn-form-incomplete {
+     margin: 10px;
+     text-align: center;
+     text-transform: uppercase;
+     background-size: 200% auto;
+     color: white;   
+     display: block;
+     border-radius: 10px;
+     padding: 10px;
+   }
+
+   .btn-form-incomplete  {
      background-position: right center; 
      color: lightgray;
      text-decoration: none;

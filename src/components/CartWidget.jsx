@@ -11,7 +11,6 @@ export default function CartWidget() {
     let cantidad = 0;
     carrito.forEach(element => {
       cantidad += Number(element.quantity)
-
     });
     setCartCount(cantidad)
   }, [carrito])

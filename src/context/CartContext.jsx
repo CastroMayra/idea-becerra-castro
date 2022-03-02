@@ -13,28 +13,22 @@ export default function CartContext({ children }) {
             quantity: quantity
         };
         if (isInCart(item.id)) {
-            // alert("El producto ya se encuentra en el Carrito")
         }
         else {
             setCarrito([...carrito, { item: item, quantity: quantity }])
-            // alert("Se agregaron " + quantity + " " + item.title + " al carrito");
         }
     }
 
     function removeItem(itemId) {
         const removeItem = (carrito.findIndex(producto => producto.item.id == itemId))
         if (removeItem >= 0) {
-            const itemEliminado = carrito.splice(removeItem, 1);
-            // alert("Se ha eliminado " + itemEliminado[0].item.title + " del carrito");
-
-        } else {
-            // alert("El producto no está en el carrito");
+            carrito.splice(removeItem, 1);
+            setCarrito([...carrito])
         }
     }
 
     function clear() {
         setCarrito([])
-        // alert("Se han eliminado todos los productos del carrito")
     }
 
     function isInCart(itemId) {

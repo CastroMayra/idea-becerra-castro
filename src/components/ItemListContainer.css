@@ -1,0 +1,16 @@
+.grillaProductos {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 2px;
+    background-color: white;
+    padding: 2px;
+    color: grey;
+}
+
+.grid-item {
+    background-color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+    text-transform: capitalize;
+}
